@@ -1,9 +1,21 @@
-import { createServer } from "http";
+import { createServer, IncomingMessage, Server, ServerResponse } from "http";
 
-const server = createServer((req, res)=>{
-    console.log(req);
-})
+const server: Server = createServer(
+  (req: IncomingMessage, res: ServerResponse) => {
+    // console.log(req);
+    // console.log(req.url);
+    // console.log(req.method);
+    const url = req.url;
+    const method = req.method;
 
-server.listen(5000, ()=>{
-    console.log("Server is running!!!!")
-})
+    if (url === "/" && method === "GET") {
+      console.log("This is root route");
+    } else {
+      console.log("this route is not defined");
+    }
+  },
+);
+
+server.listen(5000, () => {
+  console.log("Server is running!!!!");
+});
