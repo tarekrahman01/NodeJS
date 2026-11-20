@@ -17,6 +17,10 @@ const server: Server = createServer(
       res.writeHead(200, { "content-type": "application/json" });
       res.end(JSON.stringify({ message: "This is products route!!" }));
     } 
+    else if (url?.startsWith("/cat")) {
+      res.writeHead(200, { "content-type": "application/json" });
+      res.end(JSON.stringify({ message: "This is cat route!!" }));
+    } 
     else {
       //   console.log("this route is not defined");
       res.writeHead(404, { "content-type": "text/plain" });
