@@ -15,4 +15,4 @@ export const productService = () => {
 
 export const createProduct = (payload: IProduct[]) => {
   fs.writeFileSync(filePath, JSON.stringify(payload));
-};
+}; 

@@ -1,4 +1,5 @@
 [
   { "id": 2, "name": "New Product Name", "price": 40 },
-  { "id": 1793561781869, "name": "Iphone 17 Pro max", "price": 1400 }
+  { "id": 1793561781869, "name": "Iphone 17 Pro max", "price": 1400 },
+  { "id": 1795465664162, "name": "Product-4", "price": 4000 }
 ]
