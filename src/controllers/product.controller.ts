@@ -33,7 +33,28 @@ const productController = async (req: IncomingMessage, res: ServerResponse) => {
         data: product,
       }),
     );
-  } else if (method === "POST" && url === "/products") {
+  }
+   else if (method === "POST" && url === "/products") {
+    // "abct" => "a", "b", "c"
+    const body = await bodyParser(req);
+    // console.log(body)
+    const newProduct = {
+      id: Date.now(),
+      ...body,
+    };
+    // console.log(newProduct)
+    const products = productService(); // [{},{}]
+    products.push(newProduct); // [{}, {}, {new}]
+    createProduct(products);
+    res.writeHead(201, { "content-type": "application/json" });
+    res.end(
+      JSON.stringify({
+        message: "Products created successfully!?",
+        data: newProduct,
+      }),
+    );
+  }
+   else if (method === "POST" && url === "/products") {
     // "abct" => "a", "b", "c"
     const body = await bodyParser(req);
     // console.log(body)
@@ -56,3 +77,10 @@ const productController = async (req: IncomingMessage, res: ServerResponse) => {
 };
 
 export default productController;
+
+
+
+
+
+/// start
+// 6-9: Perfecting PUT Method Implementation
