@@ -74,6 +74,26 @@ const productController = async (req: IncomingMessage, res: ServerResponse) => {
       }),
     );
   }
+   else if (method === "POST" && url === "/products") {
+    // "abct" => "a", "b", "c"
+    const body = await bodyParser(req);
+    // console.log(body)
+    const newProduct = {
+      id: Date.now(),
+      ...body,
+    };
+    // console.log(newProduct)
+    const products = productService(); // [{},{}]
+    products.push(newProduct); // [{}, {}, {new}]
+    createProduct(products);
+    res.writeHead(201, { "content-type": "application/json" });
+    res.end(
+      JSON.stringify({
+        message: "Products created successfully!?",
+        data: newProduct,
+      }),
+    );
+  }
 };
 
 export default productController;
